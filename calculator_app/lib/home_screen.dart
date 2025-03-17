@@ -2,15 +2,15 @@ import 'package:calculator_app/button.dart';
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class homes extends StatefulWidget {
+  const homes({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<homes> createState() => _homesState();
 }
 
 
-class _HomeScreenState extends State<HomeScreen> {
+class _homesState extends State<homes> {
 
 
   var userInput = '';
