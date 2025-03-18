@@ -1,11 +1,17 @@
+import 'package:calculator_app/Model_/CalculatorModel.dart';
 import 'package:calculator_app/Utills/Routes/Routes.dart';
 import 'package:calculator_app/Utills/Routes/Routesname.dart';
 import 'package:calculator_app/View_Model/Calculator_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(CalculatormodelAdapter());
+  await Hive.openBox<Calculatormodel>("Calculator");
   runApp(const MyApp());
 }
 
@@ -20,7 +26,9 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return MultiProvider(
-          providers: [ChangeNotifierProvider(create: (_) => CalculatorProvider())],
+          providers: [
+            ChangeNotifierProvider(create: (_) => CalculatorProvider()),
+          ],
 
           child: Builder(
             builder: (BuildContext context) {

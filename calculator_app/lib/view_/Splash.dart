@@ -34,7 +34,7 @@ class _SplashState extends State<Splash> {
         children: [
 
           ClipRRect(
-            child: Image.asset('assets/Calculator_512.webp', width: 100.w, height: 100.h, fit: BoxFit.fill,),
+            child: Image.asset('assets/icon/icon.png', width: 140.w, height: 140.h, fit: BoxFit.fill,),
           ),
         
 
