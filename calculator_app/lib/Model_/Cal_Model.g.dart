@@ -1,35 +1,35 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'CalculatorModel.dart';
+part of 'Cal_Model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class CalculatormodelAdapter extends TypeAdapter<Calculatormodel> {
+class CalModelAdapter extends TypeAdapter<CalModel> {
   @override
   final int typeId = 0;
 
   @override
-  Calculatormodel read(BinaryReader reader) {
+  CalModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Calculatormodel(
+    return CalModel(
       UserInput: fields[0] as String?,
-      Answer: fields[1] as String?,
+      result: fields[1] as String?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, Calculatormodel obj) {
+  void write(BinaryWriter writer, CalModel obj) {
     writer
       ..writeByte(2)
       ..writeByte(0)
       ..write(obj.UserInput)
       ..writeByte(1)
-      ..write(obj.Answer);
+      ..write(obj.result);
   }
 
   @override
@@ -38,7 +38,7 @@ class CalculatormodelAdapter extends TypeAdapter<Calculatormodel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is CalculatormodelAdapter &&
+      other is CalModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

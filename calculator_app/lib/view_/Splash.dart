@@ -1,26 +1,23 @@
-import 'package:calculator_app/View_Model/Calculator_provider.dart';
+import 'package:calculator_app/View_Model/Cal_Provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-class Splash extends StatefulWidget {
-  const Splash({super.key});
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
 
   @override
-  State<Splash> createState() => _SplashState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashState extends State<Splash> {
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Provider.of<CalculatorProvider>(
-        context,
-        listen: false,
-      ).splash_load(context);
+      Provider.of<CalProvider>(context, listen: false).splash_load(context);
     });
   }
 
@@ -32,22 +29,24 @@ class _SplashState extends State<Splash> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-
           ClipRRect(
-            child: Image.asset('assets/icon/icon.png', width: 140.w, height: 140.h, fit: BoxFit.fill,),
+            child: Image.asset('assets/icon/icon.png', height: 150.h, width: 150.w, fit: BoxFit.fill,),
           ),
-        
 
           Center(
-            child: Text('Calculator App', style:  GoogleFonts.agbalumo( fontSize: 30.sp, color: Colors.white),),
+            child: Text('Calculator App', style: 
+            GoogleFonts.agbalumo(color: Colors.white,  fontSize: 30.sp)
+            ,),
           ),
 
 
-          SpinKitDualRing(color: Colors.white, size: 50.sp ,)
-
-
+          SpinKitDualRing(
+            color: Colors.white,
+            size: 50.sp,
+          )
         ],
       ),
+
     );
   }
 }

@@ -1,7 +1,8 @@
-import 'package:calculator_app/View_Model/Calculator_provider.dart';
-import 'package:calculator_app/view_/My_button.dart';
-
+import 'package:calculator_app/View_Model/Cal_Provider.dart';
+import 'package:calculator_app/button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,43 +16,46 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      backgroundColor: const Color.fromARGB(255, 178, 148, 230),
       body: SafeArea(
         child: Column(
           children: [
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
+                padding: const EdgeInsets.symmetric(vertical: 20.0),
+
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
+                  children: [
+                    //1st Container
                     Container(
                       padding: EdgeInsets.all(20),
                       alignment: Alignment.centerRight,
-                      child: Consumer<CalculatorProvider>(
+                      child: Consumer<CalProvider>(
                         builder: (context, model, child) {
                           return Text(
                             model.userInput,
-                            style: TextStyle(
-                              fontSize: 60,
-                              fontWeight: FontWeight.bold,
+                            style: GoogleFonts.poppins(
                               color: Colors.black,
+                              fontSize: 40.sp,
+                              fontWeight: FontWeight.bold,
                             ),
                           );
                         },
                       ),
                     ),
+
+                    //2st Container
                     Container(
-                      padding: EdgeInsets.all(15),
+                      padding: EdgeInsets.all(20),
                       alignment: Alignment.centerRight,
-                      child: Consumer<CalculatorProvider>(
+                      child: Consumer<CalProvider>(
                         builder: (context, model, child) {
                           return Text(
-                            model.Answer,
-                            style: TextStyle(
-                              fontSize: 60,
+                            model.answer,
+                            style: GoogleFonts.poppins(
                               color: Colors.black,
+                              fontSize: 30.sp,
                               fontWeight: FontWeight.bold,
                             ),
                           );
@@ -59,176 +63,190 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                   ],
-                          ),
+                ),
               ),
             ),
+
             Expanded(
               flex: 2,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Row(
-                      children: [
-                        MyButton(
-                          title: 'AC',
-                          onpressed: () {
-                            context.read<CalculatorProvider>().clear_input();
-                          },
-                        ),
-                        MyButton(
-                          title: '+/-',
-                          onpressed: () {},
-                        ),
-                        MyButton(
-                          title: '%',
-                          onpressed: () {
-                            context.read<CalculatorProvider>().add_input('%');
-                          },
-                            ),
-                        MyButton(
-                          title: '/',
-                        onpressed: () {
-                            context.read<CalculatorProvider>().add_input('/');
-                          },
-                          color: Color(0xffffa00a),
-                        ),
-                      ],
-                    ),
+                  //Row 1
+                  Row(
+                    children: [
+                      MyButton(
+                        title: 'AC',
+                        onPress: () {
+                          context.read<CalProvider>().clear_Input();
+                        },
+                      ),
+
+                      MyButton(
+                        title: '+/-',
+                        onPress: () {
+                          context.read<CalProvider>().add_Input('+');
+                        },
+                      ),
+
+                      MyButton(
+                        title: '%',
+                        onPress: () {
+                          context.read<CalProvider>().add_Input('%');
+                        },
+                      ),
+
+                      MyButton(
+                        title: '/',
+                        onPress: () {
+                          context.read<CalProvider>().add_Input('/');
+                        },
+                        color: Colors.orange,
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Row(
-                      children: [
-                        MyButton(
-                          title: '7',
-                         onpressed: () {
-                            context.read<CalculatorProvider>().add_input('7');
-                          },
-                        ),
-                        MyButton(
-                          title: '8',
-                        onpressed: () {
-                             context.read<CalculatorProvider>().add_input('8');
-                          },
-                        ),
-                        MyButton(
-                          title: '9',
-                         onpressed: () {
-                            context.read<CalculatorProvider>().add_input('9');
-                          },
-                        ),
-                        MyButton(
-                          title: 'x',
-                          onpressed: () {
-                            context.read<CalculatorProvider>().add_input('x');
-                          },
-                          color: Color(0xffffa00a),
-                        ),
-                      ],
-                    ),
+
+                  //Row 2
+                  Row(
+                    children: [
+                      MyButton(
+                        title: '7',
+                        onPress: () {
+                          context.read<CalProvider>().add_Input('7');
+                        },
+                      ),
+
+                      MyButton(
+                        title: '8',
+                        onPress: () {
+                          context.read<CalProvider>().add_Input('8');
+                        },
+                      ),
+
+                      MyButton(
+                        title: '9',
+                        onPress: () {
+                          context.read<CalProvider>().add_Input('9');
+                        },
+                      ),
+
+                      MyButton(
+                        title: 'x',
+                        onPress: () {
+                          context.read<CalProvider>().add_Input('x');
+                        },
+                        color: Colors.orange,
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Row(
-                      children: [
-                        MyButton(
-                           title: '4',
-                          onpressed: () {
-                            context.read<CalculatorProvider>().add_input('4');
-                          },
-                        ),
-                        MyButton(
-                          title: '5',
-                          onpressed: () {
-                            context.read<CalculatorProvider>().add_input('5');
-                          },
-                        ),
-                        MyButton(
-                          title: '6',
-                          onpressed: () {
-                            context.read<CalculatorProvider>().add_input('6');
-                          },
-                        ),
-                        MyButton(
-                          title: '-',
-                          onpressed: () {
-                            context.read<CalculatorProvider>().add_input('-');
-                          },
-                          color: Color(0xffffa00a),
-                        ),
-                             ],
-                    ),
+
+                  //Row 3
+                  Row(
+                    children: [
+                      MyButton(
+                        title: '4',
+                        onPress: () {
+                          context.read<CalProvider>().add_Input('4');
+                        },
+                      ),
+
+                      MyButton(
+                        title: '5',
+                        onPress: () {
+                          context.read<CalProvider>().add_Input('5');
+                        },
+                      ),
+
+                      MyButton(
+                        title: '6',
+                        onPress: () {
+                          context.read<CalProvider>().add_Input('6');
+                        },
+                      ),
+
+                      MyButton(
+                        title: '-',
+                        onPress: () {
+                          context.read<CalProvider>().add_Input('-');
+                        },
+                        color: Colors.orange,
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Row(
-                      children: [
-                        MyButton(
-                          title: '1',
-                          onpressed: () {
-                            context.read<CalculatorProvider>().add_input('1');
-                          },
-                        ),
-                        MyButton(
-                          title: '2',
-                          onpressed: () {
-                            context.read<CalculatorProvider>().add_input('2');
-                          },
-                        ),
-                        MyButton(
-                          title: '3',
-                          onpressed: () {
-                            context.read<CalculatorProvider>().add_input('3');
-                          },
-                          ),
-                        MyButton(
-                          title: '+',
-                          onpressed: () {
-                            context.read<CalculatorProvider>().add_input('+');
-                          },
-                          color: Color(0xffffa00a),
-                        ),
-                      ],
-                    ),
+
+                  //Row 4
+                  Row(
+                    children: [
+                      MyButton(
+                        title: '1',
+                        onPress: () {
+                          context.read<CalProvider>().add_Input('1');
+                        },
+                      ),
+
+                      MyButton(
+                        title: '2',
+                        onPress: () {
+                          context.read<CalProvider>().add_Input('2');
+                        },
+                      ),
+
+                      MyButton(
+                        title: '3',
+                        onPress: () {
+                          context.read<CalProvider>().add_Input('3');
+                        },
+                      ),
+
+                      MyButton(
+                        title: '+',
+                        onPress: () {
+                          context.read<CalProvider>().add_Input('+');
+                        },
+                        color: Colors.orange,
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Row(
-                      children: [
-                        MyButton(
-                          title: '0',
-                         onpressed: () {
-                            context.read<CalculatorProvider>().add_input('0');
-                          },
-                        ),
-                        MyButton(
-                          title: '.',
-                          onpressed: () {
-                            context.read<CalculatorProvider>().add_input('.');
-                          },
-                        ),
-                        MyButton(
-                          title: 'DEL',
-                          onpressed: () {
-                            context.read<CalculatorProvider>().delete_input();
-                          },
-                        ),
-                        MyButton(
-                          title: '=',
-                          onpressed: () {
-                            context.read<CalculatorProvider>().calculate_result();
-                          },
-                          color: Color(0xffffa00a),
-                        ),
-                      ],
-                    ),
+
+                  //Row 5
+                  Row(
+                    children: [
+                      MyButton(
+                        title: '0',
+                        onPress: () {
+                          context.read<CalProvider>().add_Input('0');
+                        },
+                      ),
+
+                      MyButton(
+                        title: '.',
+                        onPress: () {
+                          context.read<CalProvider>().add_Input('.');
+                        },
+                      ),
+
+                      MyButton(
+                        title: 'DEL',
+                        onPress: () {
+                          context.read<CalProvider>().delete_Input();
+                        },
+                      ),
+
+                      MyButton(
+                        title: '=',
+                        onPress: () {
+                          context.read<CalProvider>().calculate_Input();
+                        },
+                        color: Colors.orange,
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
           ],
         ),
-    ));
+      ),
+    );
   }
 }

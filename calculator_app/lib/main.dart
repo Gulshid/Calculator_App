@@ -1,7 +1,7 @@
-import 'package:calculator_app/Model_/CalculatorModel.dart';
+import 'package:calculator_app/Model_/Cal_Model.dart';
 import 'package:calculator_app/Utills/Routes/Routes.dart';
 import 'package:calculator_app/Utills/Routes/Routesname.dart';
-import 'package:calculator_app/View_Model/Calculator_provider.dart';
+import 'package:calculator_app/View_Model/Cal_Provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
@@ -10,8 +10,8 @@ import 'package:provider/provider.dart';
 
 void main() async {
   await Hive.initFlutter();
-  Hive.registerAdapter(CalculatormodelAdapter());
-  await Hive.openBox<Calculatormodel>("Calculator");
+  Hive.registerAdapter(CalModelAdapter());
+  await Hive.openBox<CalModel>("Calculator");
   runApp(const MyApp());
 }
 
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MultiProvider(
           providers: [
-            ChangeNotifierProvider(create: (_) => CalculatorProvider()),
+            ChangeNotifierProvider(create: (_) => CalProvider()),
           ],
 
           child: Builder(
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
                   ),
                 ),
                 initialRoute: Routesname.splash,
-                onGenerateRoute: Routes.generateRoute,
+                onGenerateRoute: Routes.generate_Route,
               );
             },
           ),
