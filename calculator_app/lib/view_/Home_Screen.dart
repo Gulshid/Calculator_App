@@ -19,18 +19,24 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20.0),
-
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    //1st Container
-                    Container(
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+            
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  //1st Container
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Container(
                       padding: EdgeInsets.all(20),
-                      alignment: Alignment.centerRight,
+                      alignment: Alignment.topRight,
+                      height: 130.h,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(10.r), topRight: Radius.circular(10.r)),
+                        color: Colors.grey
+                      ),
                       child: Consumer<CalProvider>(
                         builder: (context, model, child) {
                           return Text(
@@ -44,26 +50,34 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                       ),
                     ),
-
-                    //2st Container
-                    Container(
+                  ),
+            
+                  //2st Container
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Container(
                       padding: EdgeInsets.all(20),
                       alignment: Alignment.centerRight,
+                      height: 130.h,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10.r), bottomRight: Radius.circular(10.r)),
+                        color: Colors.grey
+                      ),
                       child: Consumer<CalProvider>(
                         builder: (context, model, child) {
                           return Text(
                             model.answer,
                             style: GoogleFonts.poppins(
                               color: Colors.black,
-                              fontSize: 30.sp,
+                              fontSize: 40.sp,
                               fontWeight: FontWeight.bold,
                             ),
                           );
                         },
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
 
@@ -74,28 +88,32 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   //Row 1
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       MyButton(
                         title: 'AC',
+                        color: const Color.fromARGB(255, 111, 174, 210),
                         onPress: () {
                           context.read<CalProvider>().clear_Input();
                         },
                       ),
-
+                  
                       MyButton(
                         title: '+/-',
-                        onPress: () {
-                          context.read<CalProvider>().add_Input('+');
+                        color:  const Color.fromARGB(255, 111, 174, 210),
+                        onPress: ({int ?value}) {
+                          context.read<CalProvider>().add_Input(value==0?'(':')');
                         },
                       ),
-
+                  
                       MyButton(
                         title: '%',
+                        color: const Color.fromARGB(255, 111, 174, 210),
                         onPress: () {
                           context.read<CalProvider>().add_Input('%');
                         },
                       ),
-
+                  
                       MyButton(
                         title: '/',
                         onPress: () {
@@ -108,6 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   //Row 2
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       MyButton(
                         title: '7',
@@ -142,6 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   //Row 3
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       MyButton(
                         title: '4',
@@ -176,6 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   //Row 4
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       MyButton(
                         title: '1',
@@ -210,6 +231,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   //Row 5
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       MyButton(
                         title: '0',

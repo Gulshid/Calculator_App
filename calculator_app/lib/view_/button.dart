@@ -23,7 +23,7 @@ class MyButton extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(0.0),
           child: Container(
-            height: 80,
+            height: 65.h,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: color
