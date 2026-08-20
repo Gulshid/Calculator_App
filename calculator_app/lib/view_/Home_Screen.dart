@@ -84,11 +84,12 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               flex: 2,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   //Row 1
-                  Row(
+                  Expanded(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       MyButton(
                         title: 'AC',
@@ -123,10 +124,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
+                  ),
 
                   //Row 2
-                  Row(
+                  Expanded(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       MyButton(
                         title: '7',
@@ -158,10 +162,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
+                  ),
 
                   //Row 3
-                  Row(
+                  Expanded(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       MyButton(
                         title: '4',
@@ -193,10 +200,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
+                  ),
 
                   //Row 4
-                  Row(
+                  Expanded(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       MyButton(
                         title: '1',
@@ -228,10 +238,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
+                  ),
 
                   //Row 5
-                  Row(
+                  Expanded(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       MyButton(
                         title: '0',
@@ -262,6 +275,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.orange,
                       ),
                     ],
+                  ),
                   ),
                 ],
               ),
